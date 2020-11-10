@@ -1,5 +1,7 @@
 package greedy;
 
+import java.math.BigInteger;
+
 public class 거스름돈 {
 
   public int function1(int price) {
@@ -52,7 +54,6 @@ public class 거스름돈 {
     end = System.nanoTime();
 
     System.out.println("소요 시간: " + (end - start));
-
   }
 
 }

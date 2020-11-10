@@ -21,7 +21,28 @@ public class _1이_될_때까지 {
       }
     }
 
-    System.out.println(count);
+    return count;
+  }
+
+  public int function2(String value1) {
+    int[] arr = Arrays.stream(value1.split(" ")).mapToInt(Integer::parseInt).toArray();
+    int N = arr[0];
+    int K = arr[1];
+
+    int count = 0;
+    while (true) {
+      // N이 K로 나누어 떨어지는 수가 될 때까지만 1씩 빼기
+      int target = (N / K) * K;
+      count += (N - target);
+      N = target;
+      if (N < K) break;
+      // K로 나누기
+      count += 1;
+      N /= K;
+    }
+
+    // 마지막으로 남은 수에 대하여 1씩 빼기
+    count += (N - 1);
     return count;
   }
 
@@ -42,15 +63,17 @@ public class _1이_될_때까지 {
     long result1 = end - start;
     System.out.println(result1);
 
-//    start = System.nanoTime();
-//    for (int i = 0; i < values1.length; i++) {
-//      System.out.println(obj.function2(values1[i], values2[i]));
-//    }
-//    end = System.nanoTime();
-//
-//    long result2 = end - start;
-//
-//    System.out.println(result1 / result2);
+    start = System.nanoTime();
+    for (int i = 0; i < values1.length; i++) {
+      if (Integer.parseInt(values2[i]) != obj.function2(values1[i])) {
+        System.out.println("오답");
+      }
+    }
+    end = System.nanoTime();
+
+    long result2 = end - start;
+
+    System.out.println(result1 / result2);
   }
 
 }
